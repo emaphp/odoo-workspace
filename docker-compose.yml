@@ -1,0 +1,46 @@
+networks:
+  odoo_workspace:
+    external: true
+
+volumes:
+  pg_odoo:
+
+services:
+  postgres:
+    image: postgis/postgis:${POSTGRES_VERSION}
+    container_name: ${POSTGRES_CONTAINER_NAME}
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      ODOO_USER: ${ODOO_USER}
+      ODOO_PASS: ${ODOO_PASS}
+    volumes:
+      - ./postgres/pg-init:/docker-entrypoint-initdb.d
+      - pg_odoo:/var/lib/postgresql/data
+    ports:
+      - ${POSTGRES_PORT}:5432
+    # yamllint disable rule:line-length
+    healthcheck:
+      test: ["CMD-SHELL", "sh -c 'pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}'"]
+      interval: 10s
+      retries: 5
+      start_period: 5s
+    # yamllint enable rule:line-length
+    restart: unless-stopped
+    networks:
+      - odoo_workspace
+
+  adminer:
+    image: adminer:${ADMINER_VERSION}
+    container_name: ${ADMINER_CONTAINER_NAME}
+    environment:
+      ADMINER_DEFAULT_SERVER: ${POSTGRES_CONTAINER_NAME}
+    ports:
+      - ${ADMINER_PORT}:8080
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - odoo_workspace

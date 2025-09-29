@@ -1,0 +1,31 @@
+.env
+extra-addons
+
+# Python
+# Pyenv
+.python-version
+.venv
+/venv
+
+# PyCharm
+.idea/
+.vscode/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+eggs/
+*.egg-info/
+.installed.cfg
+*.manifest
+*.whl
