@@ -30,7 +30,7 @@ Modules could be managed locally or added through a symbolic link to a external 
 Clone this repo. Specify the branch name corresponding to the Odoo version you plan on working:
 
 ```
- git clone -b 18.0 https://github.com/emaphp/odoo-workspace.git my-odoo-project
+ git clone -b 19.0 https://github.com/emaphp/odoo-workspace.git my-odoo-project
 ```
 
 You might want to override `origin` to point to your own repo:
@@ -49,7 +49,7 @@ Getting Odoo codebase can be achieved by adding it as a Git submodule or by simp
 To add Odoo as a submodule you can enter the following Git command:
 
 ```
- git submodule add -b 18.0 https://github.com/odoo/odoo.git odoo
+ git submodule add -b 19.0 https://github.com/odoo/odoo.git odoo
 ```
 
 This could take some time as it needs to get the entire branch along its history. You can achieve the same by doing `make fetch`. To get the latest changes from upstream you can do `git submodule update --remote` or `make update`.
@@ -66,9 +66,9 @@ You extracted copy of Odoo is now stored in `odoo/`. You might want to add the `
 
 ### Virtual environment ###
 
-Proceed to create the virtual ennironment by running `make setup`. This will create a new virtual environment named `odoo_v18`, which you can find in `~/.pyenv/versions/odoo_v18`. If you already have a virtual environment set up for this version of Odoo then you might want to set the local Python version (`pyenv local 3.10.18`).
+Proceed to create the virtual ennironment by running `make setup`. This will create a new virtual environment named `odoo_v19`, which you can find in `~/.pyenv/versions/odoo_v19`. If you already have a virtual environment set up for this version of Odoo then you might want to set the local Python version (`pyenv local 3.12.10`).
 
-To activate the virtual environment run `pyenv activate odoo_v18`.
+To activate the virtual environment run `pyenv activate odoo_v19`.
 
 If this fails, check that your `~/.profile` includes the following lines:
 
@@ -87,7 +87,7 @@ Install the environment dependencies by doing `make install`. This will install 
 
 **Note***: the list of dependencies has been modified to avoid certain installation issues with a particular set of packages (specifically `gevent` and `greenlet`).
 
-Additionally, if your setup defines an external *addons* folder (like the one in the image) you can create a *symlink* to it by hand (`ln -s /path/to/addons extra-addons`) or by running `make symlink`. This target assumes you have a `odoo-v18-modules` folder located at the same parent directory.
+Additionally, if your setup defines an external *addons* folder (like the one in the image) you can create a *symlink* to it by hand (`ln -s /path/to/addons extra-addons`) or by running `make symlink`. This target assumes you have a `odoo-v19-modules` folder located at the same parent directory.
 
 ## Configuration ##
 
@@ -114,7 +114,7 @@ In order to access the database from Adminer, navigate to http://localhost:8081 
 
 ### PyCharm ###
 
-Open the workspace folder and go to *Settings*. Add a new *Interpreter* amd select the option *Add Local Interpreter*. Click the option *Select Existing* and then pick the one installed as `odoo_v18` (`~/.pyenv/versions/odoo_v18/bin/python3.10`) by clicking on the directory icon. Verify that the list of packages is correct. It should list all dependencies available in `requirements.txt`. Click *Apply* and then *Ok*.
+Open the workspace folder and go to *Settings*. Add a new *Interpreter* amd select the option *Add Local Interpreter*. Click the option *Select Existing* and then pick the one installed as `odoo_v19` (`~/.pyenv/versions/odoo_v19/bin/python3.12`) by clicking on the directory icon. Verify that the list of packages is correct. It should list all dependencies available in `requirements.txt`. Click *Apply* and then *Ok*.
 
 Add a new *Run Configuration*. Make sure it uses the same interpreter declared in the previous step. Select the `script` option from the list and set the executable path to `$WORKPACE_DIR/odoo/odoo-bin`. Set the following flags: `-c odoo.conf -i base`. Set the *Working Directory* as the one including the `odoo` repository (`$WORKPACE_DIR/odoo`).
 

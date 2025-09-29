@@ -7,7 +7,7 @@ volumes:
 
 services:
   postgres:
-    image: postgis/postgis:${POSTGRES_VERSION}
+    image: pgvector/pgvector:${POSTGRES_VERSION}
     container_name: ${POSTGRES_CONTAINER_NAME}
     environment:
       POSTGRES_DB: ${POSTGRES_DB}

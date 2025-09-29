@@ -1,22 +1,22 @@
 # Odoo branch
-ODOO_BRANCH := 18.0
+ODOO_BRANCH := 19.0
 
 # The Python version to use
-PYTHON_VERSION := 3.10.18
+PYTHON_VERSION := 3.12.10
 
 # The name of the virtual environment
-ODOO_VENV := odoo_v18
+ODOO_VENV := odoo_v19
 
 # The Docker volume storing the Odoo database
 # Note: should include COMPOSE_PROJECT_NAME as a prefix (check .env)
-PG_VOLUME := odoo-v18-workspace_pg_odoo
+PG_VOLUME := odoo-v19-workspace_pg_odoo
 
 # The Docker network to use
 DOCKER_NETWORK := odoo_workspace
 
 # Used to symlink to the modules folder
 PARENT_DIR := $(shell cd .. && pwd)
-ADDONS_DIR := odoo-v18-modules
+ADDONS_DIR := odoo-v19-modules
 
 setup:
 	pyenv install $(PYTHON_VERSION)
