@@ -15,6 +15,7 @@ Modules could be managed locally or added through a symbolic link to a external 
  - Local private environment managed through `pyenv`.
  - Docker Compose setup, including PostgreSQL and Adminer.
  - Easy IDE integration.
+ - Optional custom PostgreSQL image including both `pgvector` and `postgis`.
 
 ## Requirements ##
 
@@ -62,7 +63,7 @@ Run the following command. This will get Odoo from the branch specified in `ODOO
  make download
 ```
 
-You extracted copy of Odoo is now stored in `odoo/`. You might want to add the `odoo` folder to your `.gitignore`.
+You extracted copy of Odoo is now stored in `odoo/`. You might want to add it to your `.gitignore`.
 
 ### Virtual environment ###
 
